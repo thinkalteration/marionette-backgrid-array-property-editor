@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>backbone + marionette + backgrid</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="assets/css/backgrid.css">
+    <link rel="stylesheet" href="assets/css/styles.css" type="text/css" media="screen"/>
+
+    <!-- scripts -->
+   	<script data-main="assets/js/main.js" src="assets/js/libs/requirejs.js"></script>
+
+
+    <!-- templates -->
+
+    <!-- 404 -->
+    <script type="text/template" id="not-found">
+        <div id="content">
+            <h2>Not found: <%= path %></h2>
+        </div>
+    </script>    
+    <!-- 404 -->
+
+
+    <!-- main page -->
+    <script type="text/template" id="main-page-layout">
+        <header class="page-header">
+            <h1>Simple mock main page layout</h1>
+            <p>Navigate to the test object below</p>
+        </header>
+
+        <div id="content"></div>
+    </script>
+
+    <script type="text/template" id="main-page">
+        <a href="object/<%= id %>"><%= title %></a>
+    </script>
+    <!-- main page -->
+
+
+    <!-- object page -->
+    <script type="text/template" id="object-layout">
+        <header class="page-header">
+            <h1><%= title %></h1>
+            <p>Below is the list of properties containing arrays</p>
+        </header>
+
+        <div id="content"></div>
+    </script>
+
+    <script type="text/template" id="object-properties-list">
+        <ul>
+            <% _.each(data, function(items, name){ %>
+            <% if (_.isArray(items)) { %>
+            <li><a href="object/<%= id %>/<%= name %>"><%= name %><a/></li>
+            <% } %>
+            <% }); %>
+        </ul>
+    </script>
+    <!-- object page -->
+
+
+    <!-- object propery page -->
+    <script type="text/template" id="object-property-layout">
+        <header id="header" class="page-header"></header>
+        <div id="content"></div>
+    </script>   
+
+    <script type="text/template" id="object-property-header">
+        <h1><%= title %>: <%= attribute %></h1>
+        <div class="controls well clearfix">
+            <a href="#" class="btn btn-success save pull-right">save</a>
+            <a href="#" class="btn btn-default add-row pull-left">add row</a>
+        </div>
+    </script>  
+    <!-- object propery page -->
+
+</head>
+<body>
+
+    <div id="main"></div>
+
+</body>
+</html>
+
